@@ -10,7 +10,6 @@ import { AppServicesService } from 'src/app/Services/app-services.service';
 export class PollsComponent implements OnInit {
 
   allPolls: any;
-  buttonLabel: any;
 
   constructor(
     private router: Router,
@@ -25,8 +24,6 @@ export class PollsComponent implements OnInit {
     this.services.getAllPolls().subscribe({
       next: (res) => {
         this.allPolls = res;
-        console.log(res);
-
       }
     })
   }
@@ -71,12 +68,14 @@ export class PollsComponent implements OnInit {
       return 'Stop';
     } else {
       return 'NO Action';
+      this.getAllPolls();
     }
   }
 
 
 
   startAction(id: any, actionText: any) {
+    debugger;
     this.services.start_stop(id, actionText).subscribe({
       next: (res) => {
         console.log(res);

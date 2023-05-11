@@ -22,7 +22,7 @@ export class EventComponent implements OnInit {
     this.services.getAllEvents().subscribe({
       next: (res) => {
         this.allEvents = res;
-        console.log(res);
+
       }
     })
   }

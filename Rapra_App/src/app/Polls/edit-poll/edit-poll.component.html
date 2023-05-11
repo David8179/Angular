@@ -3,35 +3,52 @@
 
 <head>
   <title>Edit Poll</title>
+  <style>
+    .warning-text {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Edit Poll</h1>
   <form *ngFor="let poll of polls">
     <label for="poll_name">Poll Name:</label>
-    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="poll.poll_name"><br><br>
+    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="poll.poll_name" required>
+    <span class="warning-text" *ngIf="!poll.poll_name || poll.poll_name.length < 5">Poll name must be at least 5 characters long</span>
+    <br><br>
 
     <label for="options">Selected Options:</label>
     <p-multiSelect name="selectedOptions" [options]="options" optionValue="id" optionLabel="name"
-      [(ngModel)]="poll.options_list" [filter]="true"></p-multiSelect>
+      [(ngModel)]="poll.options_list" [filter]="true" required></p-multiSelect>
+    <span class="warning-text" *ngIf="!poll.options_list || poll.options_list.length === 0">At least one option must be selected</span>
     <br><br>
 
     <label for="employees">Selected Employees:</label>
     <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
-      [(ngModel)]="poll.poll_employees_list" [filter]="true"></p-multiSelect>
+      [(ngModel)]="poll.poll_employees_list" [filter]="true" required></p-multiSelect>
+    <span class="warning-text" *ngIf="!poll.poll_employees_list || poll.poll_employees_list.length === 0">At least one employee must be selected</span>
     <br><br>
 
-      <label for="poll-start-time">Start Time:</label>
+    <label for="poll-start-time">Start Time:</label>
     <p-calendar name="start_time" [(ngModel)]="poll.poll_start" [showTime]="true" [showSeconds]="true"
-      dateFormat="yy-mm-dd"></p-calendar><br><br>
+      dateFormat="yy-mm-dd" ></p-calendar>
+    <span class="warning-text" *ngIf="!poll.poll_start">Start time is required</span>
+    <br><br>
 
-    <p>Selected Poll Start Time: {{ poll.poll_start | date:'yyyy-MM-dd HH:mm:ss' }}</p> <br>
+    <p>Selected Poll Start Time: {{ poll.poll_start | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+    <br>
 
     <label for="poll-end-time">End Time:</label>
     <p-calendar name="end_time" [(ngModel)]="poll.poll_end" [showTime]="true" [showSeconds]="true"
-      dateFormat="yy-mm-dd"></p-calendar><br><br>
+      dateFormat="yy-mm-dd" ></p-calendar>
+    <span class="warning-text" *ngIf="!poll.poll_end">End time is required</span>
+    <br><br>
 
-    <p>Selected Poll End Time: {{ poll.poll_end | date:'yyyy-MM-dd HH:mm:ss' }}</p><br>
+    <p>Selected Poll End Time: {{ poll.poll_end | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+    <br>
 
     <input type="submit" value="Save Changes" (click)="changePoll(poll)">
     <button type="button" (click)="cancel()">Cancel</button>
@@ -39,7 +56,6 @@
 </body>
 
 </html>
-
 
 
 <html>

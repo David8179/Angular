@@ -31,7 +31,7 @@
             <button class="green-button" (click)="editPoll(poll.id)">Edit</button>
             <button class="yellow-button" (click)="details(poll.id)">Details</button>
             <button class="red-button" (click)="pollDelete(poll.id)">Delete</button>
-            <button class="orange-button" (click)="toggleButton(poll.id, poll.poll_start, poll.poll_end)">{{ buttonLabel }}</button>
+            <button class="orange-button" (click)="toggleButton(poll.id, poll.poll_start, poll.poll_end)">{{ getButtonLabel(poll.id, poll.poll_start, poll.poll_end) }}</button>
             
           </td>
           </tr>

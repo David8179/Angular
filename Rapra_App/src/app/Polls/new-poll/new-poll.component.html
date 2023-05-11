@@ -3,34 +3,47 @@
 
 <head>
   <title>Create New Poll</title>
+  <style>
+    .warning-text {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Create New Poll</h1>
   <form>
     <label for="poll_name">Poll Name:</label>
-    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="polls.poll_name"><br><br>
+    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="polls.poll_name">
+    <span class="warning-text" *ngIf="polls.poll_name.length < 5">Minimum 5 characters required</span>
+    <br><br>
 
     <label for="options">Select Options to Add:</label>
     <p-multiSelect name="selectedOptions" [options]="options" optionValue="id" optionLabel="name"
-      [(ngModel)]="selectedOptions" [filter]="true"></p-multiSelect>
-
+      [(ngModel)]="selectedOptions"></p-multiSelect>
+    <span class="warning-text" *ngIf="selectedOptions.length === 0">At least one option is required</span>
     <br><br>
 
     <label for="employees">Select Employees to Add:</label>
     <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
-      [(ngModel)]="selectedEmployees" [filter]="true"></p-multiSelect>
-
+      [(ngModel)]="selectedEmployees"></p-multiSelect>
+    <span class="warning-text" *ngIf="selectedEmployees.length === 0">At least one employee is required</span>
     <br><br><br>
+
     <label for="poll_start">Start Time:</label>
     <p-calendar name="start_time" [(ngModel)]="start_time" [showTime]="true" [showSeconds]="true"
       dateFormat="yy-mm-dd"></p-calendar>
+    <span class="warning-text" *ngIf="!start_time">Start time is required</span>
     <br><br><br>
 
     <label for="poll_end">End Time:</label>
     <p-calendar name="end_time" [(ngModel)]="end_time" [showTime]="true" [showSeconds]="true"
       dateFormat="yy-mm-dd"></p-calendar>
+    <span class="warning-text" *ngIf="!end_time">End time is required</span>
     <br><br><br>
+
     <input type="submit" value="Create Poll" (click)="createPoll()">
     <button (click)="cancel()">Cancel</button>
   </form>

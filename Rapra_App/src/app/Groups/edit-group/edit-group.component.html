@@ -2,7 +2,14 @@
 <html>
 
 <head>
-  <title>Edit Group </title>
+  <title>Edit Group</title>
+  <style>
+    .warning-text {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,19 +18,23 @@
   <form #form="ngForm" *ngFor="let group of groups">
 
     <label for="group_name">Group Name:</label>
-    <input type="text" id="group_name" name="group_name" [(ngModel)]="group.group_name"><br><br>
+    <input type="text" id="group_name" name="group_name" [(ngModel)]="group.group_name" required>
+    <span class="warning-text" *ngIf="!group.group_name || group.group_name.length < 5">Group name must be at least 5 characters long</span>
+    <br><br>
 
     <label for="description">Group Description:</label><br>
-    <textarea id="description" name="description" rows="4" cols="50"
-      [(ngModel)]="group.description"></textarea><br><br>
+    <textarea id="description" name="description" rows="4" cols="50" [(ngModel)]="group.description" required></textarea>
+    <span class="warning-text" *ngIf="!group.description">Description is required</span>
+    <br><br>
 
-    
-      <label for="employees">Selected Employees:</label>
-      <form #myForm="ngForm">
-        <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
-          [(ngModel)]="group.employees_list" [filter]="true"></p-multiSelect>
-      </form>
-      <br><br>
+    <label for="employees">Selected Employees:</label>
+    <form #myForm="ngForm">
+      <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
+        [(ngModel)]="group.employees_list" [filter]="true" required></p-multiSelect>
+      <span class="warning-text" *ngIf="!group.employees_list || group.employees_list.length === 0">At least one employee is required</span>
+    </form>
+    <br><br>
+
     <input type="submit" value="Save Changes" (click)="updateGroup(group)">
     <button (click)="back()">Cancel</button>
 

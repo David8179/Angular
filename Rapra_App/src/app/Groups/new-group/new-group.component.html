@@ -2,30 +2,40 @@
 <html>
 <head>
 	<title>Create New Group</title>
+	<style>
+		.warning-text {
+			color: red;
+			font-size: 12px;
+			margin-top: 5px;
+		}
+	</style>
 </head>
 <body>
 	<h1>Create New Group</h1>
 	<form (ngSubmit)="create()" method="post">
 		<label for="group-name">Group Name:</label>
-		<input type="text" id="group-name" name="group-name" [(ngModel)]="groups.group_name" ><br><br>
+		<input type="text" id="group-name" name="group-name" [(ngModel)]="groups.group_name" required>
+		<span class="warning-text" *ngIf="!groups.group_name">Group name is required</span>
+		<br><br>
     
 		<label for="group-description">Group Description:</label><br>
-
-		<textarea id="group-description" name="group-description" rows="4" cols="50" [(ngModel)]="groups.description">></textarea><br><br>
+		<textarea id="group-description" name="group-description" rows="4" cols="50" [(ngModel)]="groups.description" required></textarea>
+		<span class="warning-text" *ngIf="!groups.description">Group description is required</span>
+		<br><br>
 
 		<label for="employees">Select Employees to Add:</label>
-    <form #myForm="ngForm">
-      <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
-      [(ngModel)]="selectedEmployees" [filter]="true"></p-multiSelect>
-    </form>
+		<form #myForm="ngForm">
+			<p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name" [(ngModel)]="selectedEmployees" [filter]="true" required></p-multiSelect>
+			<span class="warning-text" *ngIf="!selectedEmployees || selectedEmployees.length === 0">At least one employee is required</span>
+		</form>
     
-    <br><br>
+		<br><br>
 		<input type="submit" value="Create Group">
-        
-        <button type="button" (click)="goBack()">Cancel</button>
+		<button type="button" (click)="goBack()">Cancel</button>
 	</form>
 </body>
 </html>
+
 
 
 

@@ -108,6 +108,11 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.danger-text {
+  color: red;
+  font-weight: bold;
+}
+
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 
 .fa-2x {

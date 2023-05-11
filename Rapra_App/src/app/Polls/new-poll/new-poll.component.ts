@@ -56,16 +56,25 @@ export class NewPollComponent implements OnInit {
       poll_end: this.end_time
 
     }
-    this.services.createPoll(body).subscribe({
-      next: (res) => {
-        console.log(res)
+    let err = ''
+    if (!this.polls.poll_name) {
+      err = "Please enter Poll Name"
+    }
+    if (err) {
+      alert(err)
+    }
 
-        alert('New Poll Added Successfully!');
-        return this.router.navigateByUrl('/Poll');
-      }
-    })
+    else {
+      this.services.createPoll(body).subscribe({
+        next: (res) => {
+          console.log(res)
+
+          alert('New Poll Added Successfully!');
+          return this.router.navigateByUrl('/Poll');
+        }
+      })
+    }
   }
-
   cancel() {
 
     return this.router.navigateByUrl('/Poll')
@@ -89,5 +98,5 @@ export class NewPollComponent implements OnInit {
 
 
 
-
 }
+

@@ -3,41 +3,59 @@
 
 <head>
   <title>Edit Event</title>
+  <style>
+    .warning-text {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 
 <body>
   <h1>Edit Event</h1>
   <form #form="ngForm" *ngFor="let event of events">
     <label for="event-name">Event Name:</label>
-    <input type="text" id="event-name" name="event-name" [(ngModel)]="event.event_name"><br><br>
+    <input type="text" id="event-name" name="event-name" [(ngModel)]="event.event_name" required>
+    <span class="warning-text" *ngIf="!event.event_name || event.event_name.length < 5">Event name must be at least 5 characters long</span>
+    <br><br>
 
     <label for="event-desc">Description:</label>
-    <textarea id="event-desc" name="event-desc" [(ngModel)]="event.description"></textarea><br><br>
+    <textarea id="event-desc" name="event-desc" [(ngModel)]="event.description" required></textarea>
+    <span class="warning-text" *ngIf="!event.description">Description is required</span>
+    <br><br>
 
     <label for="event-venue">Venue:</label>
-    <select id="event-venue" name="event-venue">
+    <select id="event-venue" name="event-venue" [(ngModel)]="event.event_venue">
       <option value="office">Office</option>
       <option value="other">Other</option>
     </select>
-    <input type="text" id="event-venue-text" name="event-venue-text" [(ngModel)]="event.event_location"><br><br>
+    <input type="text" id="event-venue-text" name="event-venue-text" [(ngModel)]="event.event_location"
+      [class.danger-text]="event.event_venue === 'other' && (!event.event_location || event.event_location.trim().length === 0)">
+    <span class="warning-text"
+      *ngIf="event.event_venue === 'other' && (!event.event_location || event.event_location.trim().length === 0)">Venue is required for Other</span>
+    <br><br>
 
     <label for="event_date">Time:</label>
-    <p-calendar name="event_date" [(ngModel)]="event.event_date" [showTime]="true" [showSeconds]="true" dateFormat="yy-mm-dd" ></p-calendar>
-    <br>
-    <p>Selected Event Time: {{ event.event_date | date:'yyyy-MM-dd HH:mm:ss' }}</p> <br>
+    <p-calendar name="event_date" [(ngModel)]="event.event_date" [showTime]="true" [showSeconds]="true"
+      dateFormat="yy-mm-dd"></p-calendar>
+    <span class="warning-text" *ngIf="!event.event_date">Event date is required</span>
+    <p>Selected Event Time: {{ event.event_date | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+    <br><br>
 
     <label for="employees">Selected Employees:</label>
     <form #myForm="ngForm">
       <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
-        [(ngModel)]="event.event_employees_list" [filter]="true"></p-multiSelect>
+        [(ngModel)]="event.event_employees_list" [filter]="true" required></p-multiSelect>
+      <span class="warning-text" *ngIf="!event.event_employees_list || event.event_employees_list.length === 0">At least one employee is required</span>
     </form>
     <br><br>
+
     <div>
       <input type="submit" name="add-event" value="Save Changes" (click)="change(event)">
       <button type="button" (click)="cancel()">Cancel</button>
     </div>
   </form>
-
 </body>
 
 </html>
