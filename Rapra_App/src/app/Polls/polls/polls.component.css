@@ -1,0 +1,277 @@
+table {
+  width: 100%;
+  border-color: #000000;
+  border-collapse: separate;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+/* Style for the table header */
+thead th {
+  background-color: #eaeaea;
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* Style for the table body */
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  text-align: center;
+}
+
+/* Style for the table rows on hover */
+tbody tr:hover {
+  background-color: #f4f4f4;
+}
+
+/* Style for the form container */
+form > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add this line to space the elements evenly */
+  flex-wrap: wrap; /* Add this line to wrap elements onto a new line when needed */
+  margin-left: 60px;
+}
+label[for="search"] {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style for the "Search" input */
+input[type="text"] {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0px 1px 2px #ccc;
+  margin-bottom: 10px;
+  width: 200px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  flex-grow: 1; /* Add this line to allow the search input to expand to fill available space */
+  margin-right: 10px; /* Add this line to create space between the search input and the button */
+}
+
+/* Style for the "Add New Group" button */
+.blue-button {
+  background-color: rgb(60, 60, 156);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.blue-button:hover {
+  background: linear-gradient(45deg, rgb(167, 60, 149), dodgerblue);
+}
+
+.green-button {
+  background-color: rgb(50, 168, 86);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.red-button {
+  background-color: rgb(167, 19, 19);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.green-button:hover {
+  background: linear-gradient(45deg, rgb(41, 226, 118), dodgerblue);
+}
+
+.red-button:hover {
+  background: linear-gradient(45deg, rgb(175, 31, 31), dodgerblue);
+}
+
+.yellow-button {
+  background-color: rgb(153, 185, 63);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.yellow-button:hover {
+  background: linear-gradient(45deg, rgb(167, 196, 42), rgb(87, 135, 184));
+}
+
+.orange-button {
+  background-color: rgb(39, 152, 172);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.orange-button:hover {
+  background: linear-gradient(45deg, rgb(42, 186, 196), rgb(5, 40, 75));
+}
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+.fa-2x {
+  font-size: 2em;
+}
+.fa {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.main-menu:hover,
+nav.main-menu.expanded {
+  width: 250px;
+  overflow: visible;
+}
+
+.main-menu {
+  background: #212121;
+  border-right: 1px solid #e5e5e5;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  width: 60px;
+  overflow: hidden;
+  -webkit-transition: width 0.05s linear;
+  transition: width 0.05s linear;
+  z-index: 1000;
+}
+
+.main-menu > ul {
+  margin: 7px 0;
+}
+
+.main-menu li {
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+.main-menu li > a {
+  position: relative;
+  display: table;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: #999;
+  font-family: arial;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+}
+
+.main-menu .nav-icon {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.main-menu .nav-text {
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+  width: 190px;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.main-menu > ul.logout {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.no-touch .scrollable.hover {
+  overflow-y: hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+  overflow-y: auto;
+  overflow: visible;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+nav {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+nav ul,
+nav li {
+  outline: 0;
+  margin: 0;
+  padding: 0;
+}
+.main-menu li:hover > a,
+nav.main-menu li.active > a,
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus,
+.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,
+.dashboard-page nav.dashboard-menu ul li.active a {
+  color: #fff;
+  background-color: #000000;
+}
+.area {
+  float: left;
+  background: #e2e2e2;
+  width: 100%;
+  height: 100%;
+}
+@font-face {
+  font-family: "Titillium Web";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Titillium WebLight"), local("TitilliumWeb-Light"),
+    url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff)
+      format("woff");
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #777;
+  line-height: 1.5;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit Poll</title>
+</head>
+
+<body>
+  <h1>Edit Poll</h1>
+  <form *ngFor="let poll of polls">
+    <label for="poll_name">Poll Name:</label>
+    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="poll.poll_name"><br><br>
+
+    <label for="options">Selected Options:</label>
+    <p-multiSelect name="selectedOptions" [options]="options" optionValue="id" optionLabel="name"
+      [(ngModel)]="poll.options_list" [filter]="true"></p-multiSelect>
+    <br><br>
+
+    <label for="employees">Selected Employees:</label>
+    <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
+      [(ngModel)]="poll.poll_employees_list" [filter]="true"></p-multiSelect>
+    <br><br>
+
+      <label for="poll-start-time">Start Time:</label>
+    <p-calendar name="start_time" [(ngModel)]="poll.poll_start" [showTime]="true" [showSeconds]="true"
+      dateFormat="yy-mm-dd"></p-calendar><br><br>
+
+    <p>Selected Poll Start Time: {{ poll.poll_start | date:'yyyy-MM-dd HH:mm:ss' }}</p> <br>
+
+    <label for="poll-end-time">End Time:</label>
+    <p-calendar name="end_time" [(ngModel)]="poll.poll_end" [showTime]="true" [showSeconds]="true"
+      dateFormat="yy-mm-dd"></p-calendar><br><br>
+
+    <p>Selected Poll End Time: {{ poll.poll_end | date:'yyyy-MM-dd HH:mm:ss' }}</p><br>
+
+    <input type="submit" value="Save Changes" (click)="changePoll(poll)">
+    <button type="button" (click)="cancel()">Cancel</button>
+  </form>
+</body>
+
+</html>
+
+
+
+<html>
+  <head>
+
+  </head>
+  <body>
+    
+    <div class="area"></div>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/Welcome">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              HR Dashboard
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="group()">
+            <i class="fa fa-group fa-2x"></i>
+            <span class="nav-text">
+              Groups
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="event()">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              Events
+            </span>
+          </a>
+        </li>
+        <li>
+          <a (click)="poll()">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Polls
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="signOut()">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
+

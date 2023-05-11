@@ -1,0 +1,24 @@
+
+  <div class="center">
+    <h1>Login </h1>
+    <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+      <div class="inputbox">
+        <input type="username" id="username" name="username" class="form-control" [(ngModel)]="users.username" required minlength="5">
+        <span>username</span>
+        <div *ngIf="loginForm.submitted && loginForm.controls['username'].invalid" class="text-danger">
+          Please enter a valid username.
+        </div>
+      </div>
+      <div class="inputbox">
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="users.password" required minlength="8">
+        <span>password</span>
+        <div *ngIf="loginForm.submitted && loginForm.controls['password'].invalid" class="text-danger">
+          Please enter a password with at least 8 characters.
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+     
+    </form>
+  </div>

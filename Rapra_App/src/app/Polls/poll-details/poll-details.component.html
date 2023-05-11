@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Poll Details</title>
+</head>
+
+<body>
+  <h1>Poll Details</h1>
+  <ul *ngFor="let poll of polls">
+    <li><strong>poll Name:</strong> {{ poll.poll_name }}</li>
+    <li><strong>Options:</strong>
+      <ul>
+        <li *ngFor="let options of poll.option_lists let i = index">{{ options.name }} <span
+            *ngIf="(i+1)<poll.option_lists.length">,</span></li>
+      </ul>
+    <li><strong>Employees:</strong>
+      <ul>
+        <li *ngFor="let employee of poll.employee_lists let i = index">{{ employee.full_name }} <span
+            *ngIf="(i+1)<poll.employee_lists.length">,</span></li>
+      </ul>
+    </li>
+    <li><strong>Start Time:</strong> {{ poll.poll_start }}</li>
+    <li><strong>End Time:</strong> {{ poll.poll_end }}</li>
+  </ul>
+  <button (click)="goBack()">Go Back</button>
+</body>
+
+</html>
+
+
+<html>
+  <head>
+
+  </head>
+  <body>
+    
+    <div class="area"></div>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/Welcome">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              HR Dashboard
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="group()">
+            <i class="fa fa-group fa-2x"></i>
+            <span class="nav-text">
+              Groups
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="event()">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              Events
+            </span>
+          </a>
+        </li>
+        <li>
+          <a (click)="poll()">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Polls
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="signOut()">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
+

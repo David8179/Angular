@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>group Details</title>
+  </head>
+  <body>
+    <h1>group Details</h1>
+    <ul *ngFor="let group of groups">
+      <li><strong>group Name:</strong> {{ group.group_name }}</li>
+      <li><strong>Description:</strong> {{ group.description}}</li>
+      <li><strong>Group Members:</strong>
+        <ul>
+          <li *ngFor="let employee of group.employee_list; let i = index">{{ employee.employee_name }} <span *ngIf="(i+1)<group.employee_list.length">,</span></li>
+        </ul>
+      </li>
+    </ul>
+    <button (click)="goBack()">Go Back</button>
+  </body>
+</html>
+
+
+  <html>
+    <head>
+    </head>
+    <body>
+      <div class="area"></div>
+      <nav class="main-menu">
+        <ul>
+          <li>
+            <a href="http://localhost:4200/Welcome">
+              <i class="fa fa-home fa-2x"></i>
+              <span class="nav-text">
+                HR Dashboard
+              </span>
+            </a>
+          </li>
+          <li class="has-subnav">
+            <a (click)="group()">
+              <i class="fa fa-group fa-2x"></i>
+              <span class="nav-text">
+                Groups
+              </span>
+            </a>
+          </li>
+          <li class="has-subnav">
+            <a (click)="event()">
+              <i class="fa fa-calendar fa-2x"></i>
+              <span class="nav-text">
+                Events
+              </span>
+            </a>
+          </li>
+          <li>
+            <a (click)="poll()">
+              <i class="fa fa-info fa-2x"></i>
+              <span class="nav-text">
+                Polls
+              </span>
+            </a>
+          </li>
+        </ul>
+        <ul class="logout">
+          <li>
+            <a (click)="signOut()">
+              <i class="fa fa-power-off fa-2x"></i>
+              <span class="nav-text">
+                Logout
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </body>
+  </html>
+  
+  

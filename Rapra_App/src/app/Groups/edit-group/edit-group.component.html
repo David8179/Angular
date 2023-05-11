@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit Group </title>
+</head>
+
+<body>
+  <h1>Edit Group</h1>
+
+  <form #form="ngForm" *ngFor="let group of groups">
+
+    <label for="group_name">Group Name:</label>
+    <input type="text" id="group_name" name="group_name" [(ngModel)]="group.group_name"><br><br>
+
+    <label for="description">Group Description:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50"
+      [(ngModel)]="group.description"></textarea><br><br>
+
+    
+      <label for="employees">Selected Employees:</label>
+      <form #myForm="ngForm">
+        <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
+          [(ngModel)]="group.employees_list" [filter]="true"></p-multiSelect>
+      </form>
+      <br><br>
+    <input type="submit" value="Save Changes" (click)="updateGroup(group)">
+    <button (click)="back()">Cancel</button>
+
+  </form>
+</body>
+
+</html>
+
+
+<html>
+  <head>
+  </head>
+  <body>    
+    <div class="area"></div>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/Welcome">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              HR Dashboard
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="group()">
+            <i class="fa fa-group fa-2x"></i>
+            <span class="nav-text">
+              Groups
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="event()">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              Events
+            </span>
+          </a>
+        </li>
+        <li>
+          <a (click)="poll()">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Polls
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="signOut()">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
+
+

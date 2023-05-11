@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit Event</title>
+</head>
+
+<body>
+  <h1>Edit Event</h1>
+  <form #form="ngForm" *ngFor="let event of events">
+    <label for="event-name">Event Name:</label>
+    <input type="text" id="event-name" name="event-name" [(ngModel)]="event.event_name"><br><br>
+
+    <label for="event-desc">Description:</label>
+    <textarea id="event-desc" name="event-desc" [(ngModel)]="event.description"></textarea><br><br>
+
+    <label for="event-venue">Venue:</label>
+    <select id="event-venue" name="event-venue">
+      <option value="office">Office</option>
+      <option value="other">Other</option>
+    </select>
+    <input type="text" id="event-venue-text" name="event-venue-text" [(ngModel)]="event.event_location"><br><br>
+
+    <label for="event_date">Time:</label>
+    <p-calendar name="event_date" [(ngModel)]="event.event_date" [showTime]="true" [showSeconds]="true" dateFormat="yy-mm-dd" ></p-calendar>
+    <br>
+    <p>Selected Event Time: {{ event.event_date | date:'yyyy-MM-dd HH:mm:ss' }}</p> <br>
+
+    <label for="employees">Selected Employees:</label>
+    <form #myForm="ngForm">
+      <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
+        [(ngModel)]="event.event_employees_list" [filter]="true"></p-multiSelect>
+    </form>
+    <br><br>
+    <div>
+      <input type="submit" name="add-event" value="Save Changes" (click)="change(event)">
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+
+</body>
+
+</html>
+
+
+<html>
+  <head>
+
+  </head>
+  <body>
+    
+    <div class="area"></div>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/Welcome">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              HR Dashboard
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="group()">
+            <i class="fa fa-group fa-2x"></i>
+            <span class="nav-text">
+              Groups
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="event()">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              event
+            </span>
+          </a>
+        </li>
+        <li>
+          <a (click)="poll()">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Polls
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="signOut()">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
+
+

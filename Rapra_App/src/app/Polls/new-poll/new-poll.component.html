@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create New Poll</title>
+</head>
+
+<body>
+  <h1>Create New Poll</h1>
+  <form>
+    <label for="poll_name">Poll Name:</label>
+    <input type="text" id="poll_name" name="poll_name" [(ngModel)]="polls.poll_name"><br><br>
+
+    <label for="options">Select Options to Add:</label>
+    <p-multiSelect name="selectedOptions" [options]="options" optionValue="id" optionLabel="name"
+      [(ngModel)]="selectedOptions" [filter]="true"></p-multiSelect>
+
+    <br><br>
+
+    <label for="employees">Select Employees to Add:</label>
+    <p-multiSelect name="selectedEmployees" [options]="employees" optionValue="id" optionLabel="employee_name"
+      [(ngModel)]="selectedEmployees" [filter]="true"></p-multiSelect>
+
+    <br><br><br>
+    <label for="poll_start">Start Time:</label>
+    <p-calendar name="start_time" [(ngModel)]="start_time" [showTime]="true" [showSeconds]="true"
+      dateFormat="yy-mm-dd"></p-calendar>
+    <br><br><br>
+
+    <label for="poll_end">End Time:</label>
+    <p-calendar name="end_time" [(ngModel)]="end_time" [showTime]="true" [showSeconds]="true"
+      dateFormat="yy-mm-dd"></p-calendar>
+    <br><br><br>
+    <input type="submit" value="Create Poll" (click)="createPoll()">
+    <button (click)="cancel()">Cancel</button>
+  </form>
+</body>
+
+</html>
+
+
+<html>
+  <head>
+
+  </head>
+  <body>
+    
+    <div class="area"></div>
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="http://localhost:4200/Welcome">
+            <i class="fa fa-home fa-2x"></i>
+            <span class="nav-text">
+              HR Dashboard
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="group()">
+            <i class="fa fa-group fa-2x"></i>
+            <span class="nav-text">
+              Groups
+            </span>
+          </a>
+        </li>
+        <li class="has-subnav">
+          <a (click)="event()">
+            <i class="fa fa-calendar fa-2x"></i>
+            <span class="nav-text">
+              Events
+            </span>
+          </a>
+        </li>
+        <li>
+          <a (click)="poll()">
+            <i class="fa fa-info fa-2x"></i>
+            <span class="nav-text">
+              Polls
+            </span>
+          </a>
+        </li>
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="signOut()">
+            <i class="fa fa-power-off fa-2x"></i>
+            <span class="nav-text">
+              Logout
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>
+
